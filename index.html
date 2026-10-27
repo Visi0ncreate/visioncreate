@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VisionCreate – strony internetowe, które przyciągają klientów</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#010b1d;--p:#5b5ff5;--b:#4e8cfb;--t:#f1f1f3;--s:#252f79;--mut:rgba(241,241,243,.68);--line:rgba(241,241,243,.12);--card:rgba(37,47,121,.32);
+--hf:'Sora','Trebuchet MS',sans-serif;--bf:'Inter','Segoe UI',Arial,sans-serif;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--t);font:400 1rem/1.65 var(--bf);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:var(--hf);line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:800}
+h2{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:700}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0 0 1em;max-width:62ch;color:var(--mut)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--b);outline-offset:3px}
+.wrap{width:min(1160px,100% - 40px);margin:0 auto}
+section{padding:clamp(56px,9vw,110px) 0}
+.grad{background:linear-gradient(100deg,var(--b),var(--p));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo-ph{display:inline-flex;align-items:center;justify-content:center;border:1.5px dashed var(--b);border-radius:10px;color:var(--b);font:600 .9rem var(--hf);padding:.35em .9em;white-space:nowrap}
+/* nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(1,11,29,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;font-size:.95rem;color:var(--mut);transition:.25s}
+nav a:hover,nav a.on{color:var(--t);background:var(--s)}
+.btn{display:inline-block;font:600 .98rem var(--hf);text-decoration:none;border:0;cursor:pointer;color:#fff;background:linear-gradient(110deg,var(--p),var(--b));padding:.9em 1.6em;border-radius:999px;box-shadow:0 8px 28px rgba(91,95,245,.35);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(91,95,245,.5)}
+.btn.ghost{background:transparent;box-shadow:none;border:1.5px solid var(--b);color:var(--t)}
+.btn.ghost:hover{background:var(--s)}
+.menu{display:none;background:none;border:1.5px solid var(--line);color:var(--t);border-radius:10px;padding:8px 12px;font:600 .9rem var(--hf);cursor:pointer}
+@media(max-width:900px){.menu{display:block}nav{position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:12px 20px}nav.open{display:block}nav ul{flex-direction:column}.cta-nav{display:none}}
+/* pages */
+.page{display:none}.page.show{display:block;animation:enter .6s cubic-bezier(.2,.7,.2,1)}
+@keyframes enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.pagehead{padding:clamp(48px,8vw,90px) 0 10px}
+/* hero */
+.hero{position:relative;padding:clamp(40px,7vw,90px) 0 clamp(56px,8vw,100px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;z-index:-1;animation:drift 14s ease-in-out infinite alternate}
+.blob.a{width:420px;height:420px;background:var(--p);top:-120px;right:-80px}
+.blob.b{width:340px;height:340px;background:var(--s);bottom:-100px;left:-60px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(50px,40px) scale(1.15)}}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.mock{position:relative;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.laptop{background:#06142f;border:1px solid var(--line);border-radius:14px;padding:10px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.screen{background:linear-gradient(160deg,var(--s),var(--bg));border-radius:8px;aspect-ratio:16/10;padding:14px;display:grid;gap:8px;align-content:start}
+.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--b);opacity:.7}
+.bar{height:10px;border-radius:6px;background:rgba(241,241,243,.18);transform-origin:left;animation:grow 3s ease-in-out infinite alternate}
+.bar.w1{width:70%;height:22px;background:linear-gradient(90deg,var(--b),var(--p))}.bar.w2{width:90%;animation-delay:.4s}.bar.w3{width:55%;animation-delay:.8s}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}.tiles span{aspect-ratio:1.3;border-radius:8px;background:rgba(78,140,251,.25)}
+.tiles span:nth-child(2){background:rgba(91,95,245,.4)}
+@keyframes grow{from{transform:scaleX(.6)}to{transform:scaleX(1)}}
+.phone{position:absolute;right:-8px;bottom:-28px;width:26%;aspect-ratio:9/18;background:#06142f;border:1px solid var(--line);border-radius:18px;padding:8px;box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.phone div{height:100%;border-radius:12px;background:linear-gradient(170deg,var(--p),var(--s))}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.mock{margin:20px 14px 30px 0}}
+/* cards */
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:34px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;transition:transform .3s,border-color .3s}
+.card:hover{transform:translateY(-6px);border-color:var(--b)}
+.card p{margin:0}
+.soon{display:inline-block;font:600 .8rem var(--hf);color:var(--b);border:1px solid var(--b);border-radius:999px;padding:.2em .8em;margin-bottom:12px}
+.ico{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--b),var(--p));margin-bottom:16px;display:grid;place-items:center;font:700 1.2rem var(--hf)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr}}
+.about-visual{aspect-ratio:1;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 30% 25%,var(--b),transparent 55%),radial-gradient(circle at 75% 80%,var(--p),transparent 55%),var(--s);display:grid;place-items:center;animation:pulse 7s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(.96) rotate(-2deg)}}
+.cta{margin:0 auto;text-align:center;background:linear-gradient(rgba(1,11,29,.62),rgba(1,11,29,.72)),url(zdj1.png) center/cover,linear-gradient(120deg,var(--s),#171d55);border:1px solid var(--line);border-radius:28px;padding:clamp(36px,6vw,70px) 24px;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(78,140,251,.25),transparent 60%);transform:translateX(-100%);animation:shine 5s ease-in-out infinite}
+@keyframes shine{60%,100%{transform:translateX(100%)}}
+.cta p{margin:0 auto 1.4em}.cta>*{position:relative;z-index:1}
+/* portfolio */
+.pcard{display:block;text-decoration:none;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+.pcard:hover{transform:translateY(-6px);border-color:var(--b)}
+.thumb{aspect-ratio:16/10;display:grid;place-items:center;font:700 1.1rem var(--hf);color:rgba(241,241,243,.85);position:relative;overflow:hidden;background:linear-gradient(135deg,var(--s),var(--p))}
+.pcard:nth-child(2n) .thumb{background:linear-gradient(135deg,var(--b),var(--s))}
+.pcard:nth-child(3n) .thumb{background:linear-gradient(135deg,var(--p),var(--bg))}
+.thumb::after{content:"Zobacz stronę";position:absolute;inset:0;display:grid;place-items:center;background:rgba(1,11,29,.7);opacity:0;transition:opacity .3s;font:600 1rem var(--hf)}
+.pcard:hover .thumb::after{opacity:1}
+.pinfo{padding:18px 22px}.pinfo p{margin:0;font-size:.92rem}
+/* process */
+.steps{position:relative;margin-top:40px;display:grid;gap:22px}
+.steps::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--b),var(--p),transparent)}
+.step{display:flex;gap:22px;align-items:flex-start;position:relative}
+.step b{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 1.1rem var(--hf);background:var(--bg);border:2px solid var(--b)}
+.step div{padding-top:4px}.step p{margin:0}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font:600 1.05rem var(--hf);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::after{content:"+";color:var(--b);font-size:1.4rem;line-height:1;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:12px 0 0;animation:enter .4s}
+/* form */
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-size:.92rem;color:var(--mut)}
+input,select,textarea{font:inherit;color:var(--t);background:rgba(37,47,121,.35);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%;transition:border-color .25s,box-shadow .25s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--b);box-shadow:0 0 0 3px rgba(78,140,251,.25)}
+select option{background:var(--bg)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:560px){.two{grid-template-columns:1fr}}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.85rem}.check input{width:auto;margin-top:4px}
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:40px}@media(max-width:820px){.contact{grid-template-columns:1fr}}
+.ir{display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;background:var(--card);transition:border-color .25s}
+.ir a{flex:1;min-width:0;overflow-wrap:anywhere;text-decoration:none}
+.cb{flex:none;font:600 .8rem var(--hf);color:var(--t);background:var(--s);border:1px solid var(--b);border-radius:999px;padding:.5em 1em;min-height:36px;cursor:pointer;transition:background .25s}
+.cb:hover{background:var(--p)}
+.ig{flex:none;color:var(--b)}
+.ir:hover{border-color:var(--b)}
+.info small{display:block;color:var(--mut)}
+#ok{display:none;color:var(--b);font-weight:500}
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 30px;background:#010815}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}@media(max-width:820px){.fg{grid-template-columns:1fr 1fr}.fg>:first-child{grid-column:1/-1}}
+footer h3{font-size:1rem}footer ul{list-style:none;padding:0;margin:0}footer li{margin-bottom:8px}
+footer a{color:var(--mut);text-decoration:none}footer a:hover{color:var(--t)}
+.legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line);font-size:.85rem;color:var(--mut);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* ===== upgrade wizualny ===== */
+body{background:radial-gradient(1100px 600px at 85% -10%,rgba(91,95,245,.24),transparent 60%),radial-gradient(900px 500px at -10% 35%,rgba(78,140,251,.13),transparent 60%),var(--bg);background-attachment:fixed}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--b),var(--p));z-index:70;box-shadow:0 0 12px var(--p)}
+#cur{position:fixed;left:0;top:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:0 0 12px 3px var(--b);pointer-events:none;z-index:9999;opacity:0;transition:width .2s,height .2s,margin .2s,background .2s,box-shadow .2s}
+#cur.big{width:34px;height:34px;margin:-17px 0 0 -17px;background:rgba(78,140,251,.22);box-shadow:0 0 0 1.5px var(--b)}
+.star{position:fixed;left:0;top:0;pointer-events:none;z-index:9998;line-height:1;color:#dfe5ff;text-shadow:0 0 8px var(--b);animation:twinkle .95s ease-out forwards}
+@keyframes twinkle{0%{opacity:1;transform:translate(var(--x),var(--y)) scale(1) rotate(0)}100%{opacity:0;transform:translate(calc(var(--x) + var(--dx)),calc(var(--y) + var(--dy))) scale(.2) rotate(120deg)}}
+@media(hover:hover) and (pointer:fine){html,html *{cursor:none!important}}
+@media(hover:none),(pointer:coarse){#cur,.star{display:none}}
+h1{letter-spacing:-.035em;line-height:1.05}h2{letter-spacing:-.03em}
+.grad{background:linear-gradient(100deg,var(--b),var(--p),#9aa3ff,var(--b));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 7s linear infinite}
+@keyframes shift{to{background-position:250% 0}}
+.pagehead h1{background:linear-gradient(100deg,var(--t),#b9c4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+header{background:transparent;border:0;backdrop-filter:none}
+.nav{margin-top:12px;height:64px;padding:0 12px 0 20px;border:1px solid var(--line);border-radius:999px;background:rgba(10,24,58,.66);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+nav a.on{background:linear-gradient(110deg,var(--p),var(--b));color:#fff}
+@media(max-width:900px){nav{top:calc(100% + 8px);left:20px;right:20px;border:1px solid var(--line);border-radius:22px;background:rgba(1,11,29,.97)}}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35),transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::after{transform:translateX(120%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(241,241,243,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(241,241,243,.06) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 25%,transparent 75%)}
+.hero h1{font-size:clamp(2.4rem,6.4vw,5rem)}
+.mock::before{content:"";position:absolute;inset:8% 4%;background:linear-gradient(120deg,var(--p),var(--b));filter:blur(60px);opacity:.5;z-index:-1;border-radius:30px}
+.laptop{background:rgba(6,20,47,.85);border-color:rgba(78,140,251,.4);box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(78,140,251,.15)}
+.chip{position:absolute;z-index:2;padding:.55em 1em;border-radius:999px;background:rgba(1,11,29,.82);border:1px solid var(--b);backdrop-filter:blur(8px);font:600 .8rem var(--hf);box-shadow:0 10px 30px rgba(0,0,0,.45);animation:float 5s ease-in-out infinite}
+.c1{top:-14px;left:-8px}.c2{bottom:16px;left:-8px;animation-delay:-2.5s}
+section h2::after{content:"";display:block;width:64px;height:4px;border-radius:4px;margin-top:14px;background:linear-gradient(90deg,var(--b),var(--p))}
+.cta h2::after{margin-inline:auto}.cta h2{font-size:clamp(1.9rem,4.4vw,3.2rem)}
+.card{position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(160deg,rgba(37,47,121,.48),rgba(37,47,121,.14));backdrop-filter:blur(6px)}
+.pcard{position:relative}
+.card::before,.pcard::before{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(78,140,251,.24),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover::before,.pcard:hover::before{opacity:1}
+.card:hover,.pcard:hover{border-color:rgba(78,140,251,.75);box-shadow:0 22px 55px rgba(37,47,121,.55)}
+.rv.in{transition:opacity .7s,transform .35s,border-color .3s,box-shadow .3s}
+.ico{width:54px;height:54px;border-radius:16px;font-size:1.4rem;box-shadow:0 10px 26px rgba(91,95,245,.45)}
+.about-visual{box-shadow:0 30px 70px rgba(37,47,121,.6),0 0 0 1px rgba(78,140,251,.35)}
+.thumb{display:flex;align-items:flex-end;justify-content:center;padding:13% 12% 0}
+.bw{width:100%;height:100%;background:rgba(1,11,29,.78);border:1px solid rgba(241,241,243,.22);border-bottom:0;border-radius:12px 12px 0 0;padding:10px 12px;display:grid;gap:7px;align-content:start;transition:transform .5s}
+.pcard:hover .bw{transform:translateY(-8px)}
+.thumb.hasimg{padding:0;display:block;background:var(--s)}
+.svc{display:block;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.svc .pr{display:block;font:700 1.45rem var(--hf);margin:.1em 0 .5em}
+.svc small{display:block;margin-top:14px;color:var(--b);font-weight:500}
+.svc.act{border-color:var(--p);box-shadow:0 0 0 1px var(--p),0 22px 55px rgba(91,95,245,.35)}
+.pop{animation:enter .45s}
+#detail h3{font-size:1.6rem}#detail p{max-width:none}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.pcard:hover .thumb img{transform:scale(1.05)}
+.bd{display:flex;gap:4px}.bd i{width:6px;height:6px;border-radius:50%;background:var(--b)}
+.bl{height:8px;border-radius:5px;background:rgba(241,241,243,.25)}.l1{width:62%;height:14px;background:linear-gradient(90deg,var(--b),var(--p))}.l2{width:84%}
+.bt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.bt s{display:block;aspect-ratio:1.4;border-radius:6px;background:rgba(78,140,251,.32)}
+.step b{background:linear-gradient(135deg,var(--b),var(--p));border:0;color:#fff;box-shadow:0 0 0 6px rgba(78,140,251,.16),0 8px 24px rgba(91,95,245,.5)}
+.step div{flex:1;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 22px}.step h3{margin-bottom:.25em}
+details{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px;background:var(--card);transition:border-color .3s}
+details[open]{border-color:var(--b)}
+form{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,34px)}
+footer{border-top:1px solid rgba(78,140,251,.35);background:linear-gradient(180deg,rgba(37,47,121,.28),#010815)}
+.logo{display:inline-flex;align-items:center}.logo img{height:38px;width:auto;display:block}
+.soon.ok{background:var(--p);border-color:var(--p);color:#fff}
+h1{overflow-wrap:break-word}
+@media(max-width:560px){
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+.wrap{width:calc(100% - 32px)}
+.nav{height:58px}nav{left:16px;right:16px}nav a{padding:14px}
+.logo img{height:30px}
+section{padding:48px 0}
+h1{font-size:2.05rem}
+.row{flex-direction:column}.row .btn,.cta .btn,form .btn{width:100%;text-align:center}
+.btn{padding:1em 1.4em}
+input,select,textarea{font-size:16px}
+.card{padding:20px}
+.step{gap:14px}.step b{width:40px;height:40px}.steps::before{left:19px}
+summary{min-height:44px}
+.phone{right:-4px;bottom:-20px;width:30%}
+.about-visual{aspect-ratio:1.2}
+.ir{padding:12px 14px}
+.legal{flex-direction:column}
+}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="prog"></div><div id="cur"></div>
+<header><div class="wrap nav">
+  <a href="#start" class="logo" aria-label="VisionCreate – strona główna"><img src="logo.png" alt="VisionCreate"></a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav"><ul>
+    <li><a href="#start" data-n="start">Strona główna</a></li>
+    <li><a href="#uslugi" data-n="uslugi">Usługi</a></li>
+    <li><a href="#portfolio" data-n="portfolio">Portfolio</a></li>
+    <li><a href="#proces" data-n="proces">Proces współpracy</a></li>
+    
+    <li><a href="#kontakt" data-n="kontakt">Kontakt</a></li>
+  </ul></nav>
+  <a href="#kontakt" class="btn cta-nav">Bezpłatna wycena</a>
+</div></header>
+
+<main>
+<!-- STRONA GŁÓWNA -->
+<div class="page" id="p-start">
+  <div class="hero"><div class="blob a"></div><div class="blob b"></div>
+    <div class="wrap">
+      <div>
+        <h1>Tworzymy strony, które <span class="grad">przyciągają klientów</span></h1>
+        <p style="font-size:1.15rem">VisionCreate projektuje i wdraża szybkie, nowoczesne strony internetowe dla firm, które chcą być widoczne i wiarygodne w sieci.</p>
+        <div class="row"><a class="btn" href="#portfolio">Zobacz realizacje</a><a class="btn ghost" href="#kontakt">Bezpłatna wycena</a></div>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="laptop"><div class="screen"><div class="dots"><i></i><i></i><i></i></div><div class="bar w1"></div><div class="bar w2"></div><div class="bar w3"></div><div class="tiles"><span></span><span></span><span></span></div></div></div>
+        <div class="phone"><div></div></div><span class="chip c1">✓ Responsywna</span><span class="chip c2">✦ Indywidualny projekt</span>
+      </div>
+    </div>
+  </div>
+
+  <section><div class="wrap rv">
+    <h2>Dlaczego VisionCreate</h2>
+    <div class="grid">
+      <div class="card"><div class="ico">✦</div><h3>Indywidualny projekt</h3><p>Żadnych gotowych szablonów. Każda strona powstaje od zera pod Twoją markę.</p></div>
+      <div class="card"><div class="ico">★</div><h3>Profesjonalne podejście do klienta</h3><p>Jasna komunikacja na każdym etapie, szczere doradztwo i dotrzymywanie terminów. Traktujemy Twój projekt jak własny.</p></div>
+      <div class="card"><div class="ico">▭</div><h3>Wersja mobilna</h3><p>Strona wygląda i działa równie dobrze na telefonie, tablecie i komputerze.</p></div>
+      <div class="card"><div class="ico">✓</div><h3>Opieka po wdrożeniu</h3><p>Zostajemy z Tobą po publikacji: aktualizacje, poprawki i wsparcie techniczne.</p></div>
+    </div>
+  </div></section>
+
+  <section id="o-nas" style="padding-top:0"><div class="wrap split rv">
+    <div class="about-visual" aria-hidden="true"><img src="zdj2.png" alt="VisionCreate" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+    <div>
+      <h2>O nas</h2>
+      <p>VisionCreate to studio tworzące strony internetowe. Łączymy dobry projekt graficzny z solidnym wykonaniem, żeby Twoja firma miała stronę, która naprawdę pracuje na wyniki.</p>
+      <p>Naszą misją jest dawanie małym i średnim firmom narzędzi, które do tej pory były dostępne głównie dla dużych marek. Stawiamy na szczerą komunikację, jasne zasady i terminowość.</p>
+      <a class="btn ghost" href="#proces">Jak pracujemy</a>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap"><div class="cta rv">
+    <h2>Porozmawiajmy o Twoim projekcie</h2>
+    <p>Opisz, czego potrzebujesz. Odpowiemy w ciągu 24 godzin i przygotujemy bezpłatną wycenę.</p>
+    <a class="btn" href="#kontakt">Bezpłatna wycena</a>
+  </div></div></section>
+</div>
+
+<!-- USŁUGI -->
+<div class="page" id="p-uslugi">
+  <div class="wrap pagehead"><h1>Usługi</h1></div>
+  <section style="padding-top:30px"><div class="wrap">
+    <div class="grid" id="svc"></div>
+    <div class="card rv" id="detail" style="margin-top:40px">
+      <h3 id="dt">Strony wizytówki</h3>
+      <div class="grid" id="dg" style="margin-top:18px">
+        <div><b>Dla kogo</b><p>Opis grupy docelowej.</p></div>
+        <div><b>Co otrzymasz</b><p>Lista korzyści i rezultatów.</p></div>
+        <div><b>Zakres prac</b><p>Etapy i elementy realizacji.</p></div>
+        <div><b>Czas realizacji</b><p>Orientacyjny termin.</p></div>
+      </div>
+    </div>
+    <div style="margin-top:40px;text-align:center"><a class="btn" href="#kontakt">Zapytaj o wycenę</a></div>
+  </div></section>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="page" id="p-portfolio">
+  <div class="wrap pagehead"><h1>Portfolio</h1><p style="font-size:1.1rem">Wybrane projekty VisionCreate. Kliknij projekt, aby zobaczyć działającą stronę.</p></div>
+  <section style="padding-top:30px"><div class="wrap"><div class="grid" id="pf" style="margin-top:0"></div></div></section>
+</div>
+
+<!-- PROCES -->
+<div class="page" id="p-proces">
+  <div class="wrap pagehead"><h1>Proces współpracy</h1><p style="font-size:1.1rem">Sześć jasnych kroków od pierwszej rozmowy do publikacji strony.</p></div>
+  <section style="padding-top:20px"><div class="wrap">
+    <div class="steps">
+      <div class="step rv"><b>1</b><div><h3>Rozmowa i brief</h3><p>Poznajemy Twoją firmę, cele i oczekiwania wobec strony.</p></div></div>
+      <div class="step rv"><b>2</b><div><h3>Wycena i umowa</h3><p>Przygotowujemy ofertę z zakresem, ceną i terminem, a następnie podpisujemy umowę.</p></div></div>
+      <div class="step rv"><b>3</b><div><h3>Projekt graficzny</h3><p>Tworzymy wygląd strony i poprawiamy go razem z Tobą do pełnej akceptacji.</p></div></div>
+      <div class="step rv"><b>4</b><div><h3>Wdrożenie</h3><p>Zamieniamy projekt w działającą stronę z panelem do edycji treści.</p></div></div>
+      <div class="step rv"><b>5</b><div><h3>Testy</h3><p>Sprawdzamy szybkość, działanie na różnych urządzeniach i formularze.</p></div></div>
+      <div class="step rv"><b>6</b><div><h3>Publikacja i wsparcie</h3><p>Uruchamiamy stronę i zostajemy do Twojej dyspozycji po starcie.</p></div></div>
+    </div>
+    <h2 style="margin-top:80px">Najczęstsze pytania</h2>
+    <details><summary>Ile trwa stworzenie strony?</summary><p>Zależy od zakresu. Prosta strona wizytówka zajmuje zwykle kilka tygodni, większe projekty dłużej. Dokładny termin podajemy w wycenie.</p></details>
+    
+    <details><summary>Czy pomagacie z domeną i hostingiem?</summary><p>Tak, doradzimy wybór i zajmiemy się konfiguracją.</p></details>
+    <details><summary>Czy strona będzie działać na telefonie?</summary><p>Każda strona jest w pełni responsywna i testowana na różnych urządzeniach.</p></details>
+    <details><summary>Co po publikacji strony?</summary><p>Oferujemy opiekę techniczną, aktualizacje i bieżące poprawki.</p></details>
+  </div></section>
+</div>
+
+
+
+<!-- KONTAKT -->
+<div class="page" id="p-kontakt">
+  <div class="wrap pagehead"><h1>Kontakt</h1><p style="font-size:1.1rem">Opisz swój projekt. Wiadomość zwrotna do 24 godzin.</p></div>
+  <section style="padding-top:30px"><div class="wrap contact">
+    <form id="f" novalidate>
+      <div class="two"><label>Imię<input name="imie" required autocomplete="name"></label><label>E-mail<input name="email" type="email" required autocomplete="email"></label></div>
+      <div class="two"><label>Telefon<input name="tel" type="tel" autocomplete="tel"></label>
+        <label>Typ projektu<select name="typ"><option>Strona wizytówka</option><option>Sklep internetowy</option><option>Redesign strony</option><option>SEO i utrzymanie</option><option>Inne</option></select></label></div>
+      <label>Budżet<select name="budzet"><option>Do ustalenia</option><option>do 500 zł</option><option>500 – 1 000 zł</option><option>1 000 – 3 000 zł</option><option>powyżej 3 000 zł</option></select></label>
+      <label>Wiadomość<textarea name="msg" rows="5" required></textarea></label>
+      <label class="check"><input type="checkbox" required> Wyrażam zgodę na przetwarzanie danych osobowych w celu odpowiedzi na zapytanie.</label>
+      <button class="btn" type="submit">Wyślij wiadomość</button>
+      <span id="ok" role="status"></span>
+    </form>
+    <div class="info">
+      <div class="ir"><a href="mailto:visioncreate.kontakt@gmail.com"><small>E-mail</small>visioncreate.kontakt@gmail.com</a><button type="button" class="cb" data-copy="visioncreate.kontakt@gmail.com">Kopiuj</button></div>
+      <div class="ir"><a href="tel:+48794793133"><small>Telefon</small>794 793 133</a><button type="button" class="cb" data-copy="794 793 133">Kopiuj</button></div>
+      <div class="ir"><svg class="ig" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><a href="https://www.instagram.com/visi0n.create/" target="_blank" rel="noopener"><small>Instagram</small>@visi0n.create</a></div>
+      <div class="card" style="margin-top:6px"><h3>Odpowiadamy szybko</h3><p>Wiadomość zwrotna do 24 godzin.</p></div>
+    </div>
+  </div></section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a href="#start" class="logo"><img src="logo.png" alt="VisionCreate"></a><p style="margin-top:14px">Tworzymy nowoczesne strony internetowe, które przyciągają klientów.</p></div>
+    <div><h3>Strona</h3><ul><li><a href="#start">Strona główna</a></li><li><a href="#o-nas">O nas</a></li><li><a href="#uslugi">Usługi</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#proces">Proces współpracy</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+    <div><h3>Kontakt</h3><ul><li><a href="mailto:visioncreate.kontakt@gmail.com">visioncreate.kontakt@gmail.com</a></li><li><a href="tel:+48794793133">794 793 133</a></li><li><a href="https://www.instagram.com/visi0n.create/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+    
+  </div>
+  <div class="legal"><span>© 2026 VisionCreate. Wszelkie prawa zastrzeżone.</span><span><a href="#start">Polityka prywatności</a> · <a href="#start">Polityka cookies</a></span></div>
+</div></footer>
+
+<script>
+var PROJ=[["Projekt 1","Strona wizytówka","https://vortexdetail.github.io/","projekt1.png"],["Projekt 2","Strona + podstrony"],["Projekt 3","Sklep internetowy"],["Projekt 4","Landing page"],["Projekt 5","Redesign"],["Projekt 6","Strona firmowa"],["Projekt 7","Branding i strona"]].map(function(p,i){return{n:p[0],t:p[1],url:p[2]||"https://example.com/projekt-"+(i+1),img:p[3]}});
+document.getElementById("pf").innerHTML=PROJ.map(function(p){return '<a class="pcard rv" href="'+p.url+'" target="_blank" rel="noopener"><div class="thumb'+(p.img?' hasimg':'')+'">'+(p.img?'<img src="'+p.img+'" alt="'+p.n+'" loading="lazy">':'<div class="bw"><div class="bd"><i></i><i></i><i></i></div><div class="bl l1"></div><div class="bl l2"></div><div class="bt"><s></s><s></s><s></s></div></div>')+'</div><div class="pinfo"><h3>'+p.n+'</h3><p>'+p.t+'</p></div></a>'}).join("");
+var SV0=[["Strony wizytówki","Prosta, elegancka strona, która przedstawia Twoją firmę, ofertę i dane kontaktowe. Idealna na start w internecie.",1],["Landing page","Jednostronicowa strona nastawiona na jeden cel: zapytanie, zapis lub sprzedaż konkretnej oferty.",1],["Sklepy internetowe","Sklep z koszykiem, płatnościami i panelem zamówień.",0],["Redesign stron","Odświeżamy wygląd i działanie istniejącej strony, aby była nowoczesna, szybka i czytelna.",1],["SEO","Optymalizacja strony pod wyszukiwarki, żeby łatwiej było Cię znaleźć w Google.",0],["Hosting i opieka techniczna","Konfiguracja domeny i hostingu, aktualizacje, kopie zapasowe i szybkie poprawki po wdrożeniu.",1]];
+var SV=[
+{t:"Strony wizytówki",p:"499–999 zł",d:"Prosta, elegancka strona, która przedstawia Twoją firmę, ofertę i dane kontaktowe. Idealna na start w internecie.",w:"Dla małych firm, freelancerów i usługodawców, którzy chcą pojawić się w internecie i pokazać swoją ofertę oraz kontakt.",g:"Gotową, responsywną stronę z dopasowanym projektem graficznym, czytelną ofertą i formularzem kontaktowym.",s:"Projekt graficzny, wdrożenie, dopasowanie do telefonów, formularz kontaktowy, podstawowe SEO, uruchomienie na Twojej domenie.",c:"5–10 dni roboczych"},
+{t:"Landing Page",p:"449–899 zł",d:"Jednostronicowa strona nastawiona na jeden cel: zapytanie, zapis lub sprzedaż konkretnej oferty.",w:"Dla firm i osób, które promują jedną konkretną ofertę, produkt, wydarzenie lub kampanię reklamową.",g:"Jednostronicową stronę, która prowadzi odwiedzającego do jednego działania: zapytania, zapisu lub zakupu.",s:"Układ nastawiony na konwersję, sekcje oferty, przyciski wezwania do działania, formularz, wersja mobilna, szybkie ładowanie.",c:"4–7 dni roboczych"},
+{t:"Sklepy internetowe",p:"1 599–2 099 zł",d:"Sklep internetowy z katalogiem produktów, koszykiem, płatnościami i panelem zarządzania zamówieniami.",w:"Dla firm, które chcą sprzedawać produkty online i mieć pełną kontrolę nad sprzedażą.",g:"Działający sklep z katalogiem produktów, koszykiem, płatnościami i panelem do zarządzania zamówieniami.",s:"Projekt sklepu, konfiguracja katalogu i kategorii, koszyk i zamówienia, integracja płatności i dostaw, wersja mobilna, wprowadzenie do obsługi panelu.",c:"4–8 tygodni"},
+{t:"Redesign stron",p:"499–2 099 zł",d:"Odświeżamy wygląd i działanie istniejącej strony, aby była nowoczesna, szybka i czytelna.",w:"Dla firm, które mają już stronę, ale wygląda przestarzało, działa wolno albo słabo pozyskuje klientów.",g:"Odświeżoną, nowoczesną i szybką stronę, która zachowuje Twoje treści i charakter marki.",s:"Analiza obecnej strony, nowy projekt graficzny, poprawa układu i nawigacji, optymalizacja szybkości, dostosowanie do telefonów, przeniesienie treści.",c:"1–2 tygodnie"},
+{t:"SEO",p:"239 zł/mies.",d:"Optymalizacja strony pod wyszukiwarki, aby poprawić jej widoczność i ułatwić klientom znalezienie Twojej firmy w Google.",w:"Dla firm, które mają stronę i chcą być lepiej widoczne w Google oraz zdobywać klientów z wyszukiwarki.",g:"Wyższą widoczność strony, uporządkowaną strukturę i regularną opiekę nad pozycjami.",s:"Audyt techniczny, dobór słów kluczowych, optymalizacja treści i nagłówków, poprawa szybkości, miesięczna opieka i raport z postępów.",c:"Pierwsze efekty mogą pojawić się po kilku miesiącach, zależnie od konkurencji i stanu strony."},
+{t:"Strony internetowe i podstrony",p:"1 099–1 999 zł",d:"Nowoczesne strony składające się ze strony głównej i kilku podstron, dopasowane do charakteru Twojej firmy.",w:"Dla firm, które potrzebują więcej niż jednej strony: oferty, informacji o firmie, realizacji, kontaktu i innych podstron.",g:"Nowoczesną, wielostronicową stronę z przejrzystym układem, responsywnym designem i intuicyjną nawigacją, dzięki której klienci łatwo znajdą najważniejsze informacje.",s:"Projekt graficzny, strona główna i podstrony, menu i nawigacja, wersja mobilna, formularz kontaktowy, podstawowe SEO, publikacja.",c:"7–14 dni roboczych"}];
+var svc=document.getElementById("svc");
+svc.innerHTML=SV.map(function(s,i){return '<button type="button" class="card svc rv" data-i="'+i+'"><span class="soon ok">Dostępne</span><h3>'+s.t+'</h3><span class="pr grad">'+s.p+'</span><p>'+s.d+'</p><small>Zobacz szczegóły</small></button>'}).join("");
+function showSv(i,sc){var s=SV[i],dt=document.getElementById("detail");document.getElementById("dt").textContent=s.t;
+ document.getElementById("dg").innerHTML='<div><b>Dla kogo</b><p>'+s.w+'</p></div><div><b>Co otrzymasz</b><p>'+s.g+'</p></div><div><b>Zakres prac</b><p>'+s.s+'</p></div><div><b>Czas realizacji</b><p>'+s.c+'</p></div>';
+ svc.querySelectorAll(".svc").forEach(function(b,j){b.classList.toggle("act",j===i)});
+ dt.classList.remove("pop");void dt.offsetWidth;dt.classList.add("pop");if(sc)dt.scrollIntoView({behavior:"smooth",block:"nearest"})}
+svc.onclick=function(e){var b=e.target.closest(".svc");if(b)showSv(+b.dataset.i,true)};
+showSv(0,false);
+SV0.map(function(s){return '<div class="card rv"><span class="'+(s[2]?'soon ok':'soon')+'">'+(s[2]?'Dostępne':'Wkrótce dostępne')+'</span><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join("");
+var cu=document.getElementById("cur"),pg=document.getElementById("prog"),fine=matchMedia("(hover:hover) and (pointer:fine)").matches,calm=matchMedia("(prefers-reduced-motion:reduce)").matches,lt=0;
+document.addEventListener("mouseleave",function(){cu.style.opacity=0});
+document.addEventListener("pointermove",function(e){
+ if(fine){cu.style.opacity=1;cu.style.transform="translate("+e.clientX+"px,"+e.clientY+"px)";cu.classList.toggle("big",!!(e.target.closest&&e.target.closest("a,button,summary,select,input,textarea,label")));
+  var n=Date.now();if(!calm&&n-lt>110){lt=n;var s=document.createElement("span");s.className="star";s.textContent="✦";s.style.fontSize=(6+Math.random()*7)+"px";s.style.setProperty("--x",(e.clientX+Math.random()*16-8)+"px");s.style.setProperty("--y",(e.clientY+Math.random()*16-8)+"px");s.style.setProperty("--dx",(Math.random()*40-20)+"px");s.style.setProperty("--dy",(10+Math.random()*30)+"px");document.body.appendChild(s);setTimeout(function(){s.remove()},1000)}}
+ var c=e.target.closest&&e.target.closest(".card,.pcard");if(c){var r=c.getBoundingClientRect();c.style.setProperty("--mx",e.clientX-r.left+"px");c.style.setProperty("--my",e.clientY-r.top+"px")}});
+window.addEventListener("scroll",function(){var h=document.documentElement.scrollHeight-innerHeight;pg.style.width=(h>0?scrollY/h*100:0)+"%"},{passive:true});
+var pages=["start","uslugi","portfolio","proces","kontakt"],io;
+function reveal(){if(io)io.disconnect();io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12});document.querySelectorAll(".page.show .rv").forEach(function(el){el.classList.remove("in");io.observe(el)})}
+function route(){var h=(location.hash||"#start").slice(1),sec=null;if(h==="o-nas"){sec=h;h="start"}if(pages.indexOf(h)<0)h="start";
+ document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("show",p.id==="p-"+h)});
+ document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.dataset.n===h)});
+ document.getElementById("nav").classList.remove("open");document.querySelector(".menu").setAttribute("aria-expanded","false");
+ reveal();if(sec){setTimeout(function(){document.getElementById(sec).scrollIntoView()},60)}else window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route();
+document.querySelector(".menu").onclick=function(){var n=document.getElementById("nav"),o=n.classList.toggle("open");this.setAttribute("aria-expanded",o)};
+document.getElementById("f").onsubmit=function(e){e.preventDefault();var f=e.target,ok=document.getElementById("ok");
+ if(!f.imie.value||!f.email.value||!f.msg.value||!f.querySelector('[type=checkbox]').checked){ok.style.display="block";ok.textContent="Uzupełnij imię, e-mail, wiadomość i zaznacz zgodę.";return}
+ var body="Imię: "+f.imie.value+"\nE-mail: "+f.email.value+"\nTelefon: "+f.tel.value+"\nTyp projektu: "+f.typ.value+"\nBudżet: "+f.budzet.value+"\n\n"+f.msg.value;
+ sendForm(f,body,ok);
+};
+function sendForm(f,body,ok){
+ var btn=f.querySelector("button[type=submit]"),old=btn.textContent;btn.disabled=true;btn.textContent="Wysyłanie…";ok.style.display="block";ok.textContent="";
+ var data={name:f.imie.value,email:f.email.value,phone:f.tel.value,"typ projektu":f.typ.value,"budżet":f.budzet.value,message:f.msg.value,_subject:"Nowe zapytanie ze strony VisionCreate",_template:"table",_captcha:"false"};
+ fetch("https://formsubmit.co/ajax/visioncreate.kontakt@gmail.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(data)})
+ .then(function(r){return r.json()})
+ .then(function(j){if(j.success==="true"||j.success===true){f.reset();ok.textContent="Dziękujemy! Wiadomość została wysłana. Odpowiemy do 24 godzin."}else throw 0})
+ .catch(function(){ok.textContent="Nie udało się wysłać automatycznie. Otwieramy Twój program pocztowy, wyślij wiadomość stamtąd.";location.href="mailto:visioncreate.kontakt@gmail.com?subject="+encodeURIComponent("Zapytanie ze strony VisionCreate")+"&body="+encodeURIComponent(body)})
+ .finally(function(){btn.disabled=false;btn.textContent=old})}
+document.querySelectorAll(".cb").forEach(function(b){b.onclick=function(){var t=b.dataset.copy;
+ function done(){b.textContent="Skopiowano";setTimeout(function(){b.textContent="Kopiuj"},1600)}
+ function fb(){var a=document.createElement("textarea");a.value=t;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(e){}a.remove();done()}
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fb)}else fb()}});
+</script>
+</body>
+</html>
