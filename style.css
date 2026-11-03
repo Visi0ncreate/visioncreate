@@ -215,3 +215,5 @@ img{max-width:100%}
 .hero{min-height:0;padding:64px 0 72px}
 .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.5) 100%),linear-gradient(0deg,#000 0%,transparent 20%)}
 }
+
+*, *::before, *::after { border-radius: 0 !important; }
