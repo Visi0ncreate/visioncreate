@@ -2,7 +2,7 @@
 var form=document.getElementById("f");
 var cl=function(v,max,nl){v=String(v==null?"":v).replace(nl?/[\u0000-\u0009\u000b\u000c\u000e-\u001f\u007f]/g:/[\u0000-\u001f\u007f]/g," ").replace(/[<>]/g,"").trim();return v.slice(0,max)};
 if(form){
-var W3F_KEY=""; /* opcjonalnie: klucz z web3forms.com; gdy pusty, używany jest FormSubmit */
+var W3F_KEY="dbeebd37-77dd-45e4-92a0-3a0bac677e77"; /* opcjonalnie: klucz z web3forms.com; gdy pusty, używany jest FormSubmit */
 form.onsubmit=function(e){e.preventDefault();var f=e.target,ok=document.getElementById("ok");
  if(f._honey&&f._honey.value)return;
  var last=0;try{last=+localStorage.getItem("vc_last")||0}catch(x){}
